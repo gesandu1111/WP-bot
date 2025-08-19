@@ -1,0 +1,14 @@
+{
+  "name": "wp-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp Bot M.R.Gesa",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@adiwajshing/baileys": "^5.0.0"
+  },
+  "author": "Gesandu",
+  "license": "MIT"
+}
