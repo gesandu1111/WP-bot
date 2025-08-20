@@ -1,15 +1,14 @@
 // M.R.Gesa WhatsApp Bot
-const { default: makeWASocket, useMultiFileAuthState } = require("@adiwajshing/baileys");
+const { default: makeWASocket, useSingleFileAuthState } = require("@adiwajshing/baileys");
 const P = require('pino');
 
-async function startBot() {
-    // Authentication state save කරන්න folder එක
-    const { state, saveCreds } = await useMultiFileAuthState('auth_info');
+// Auth state save file
+const { state, saveCreds } = useSingleFileAuthState('./auth_info.json');
 
-    // Bot connection
+async function startBot() {
     const sock = makeWASocket({
         logger: P({ level: 'silent' }),
-        printQRInTerminal: true,    // ✅ QR code terminal එකේ print වෙන flag එක
+        printQRInTerminal: true,  // ✅ QR code terminal එකේ print වෙන flag එක
         auth: state
     });
 
