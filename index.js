@@ -17,11 +17,11 @@ async function startBot() {
         const { connection, lastDisconnect } = update;
         if(connection === 'close'){
             console.log('🔌 Bot disconnected, reconnect karanna...');
+            if(lastDisconnect.error){
+                console.log('Reason:', lastDisconnect.error.output?.statusCode, lastDisconnect.error.message);
+            }
         } else if(connection === 'open'){
             console.log('✅ Bot connected successfully!');
-        }
-        if(lastDisconnect){
-            console.log('Last disconnect reason:', lastDisconnect.error);
         }
     });
 
@@ -40,6 +40,9 @@ async function startBot() {
         }
         if(text.toLowerCase() === 'suba udasank'){
             await sock.sendMessage(msg.key.remoteJid, { text: '🌞 සුභ උදෑසනක්! මගේ මිතුරා 🌸' });
+        }
+        if(text.toLowerCase() === 'mage nama'){
+            await sock.sendMessage(msg.key.remoteJid, { text: '😎 මගේ නම *M.R.Gesa Bot* 🖤' });
         }
     });
 }
