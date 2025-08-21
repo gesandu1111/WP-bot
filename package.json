@@ -6,7 +6,8 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@adiwajshing/baileys": "^6.8.2",
-    "pino": "^8.19.0"
+    "@adiwajshing/baileys": "6.7.0",
+    "pino": "^8.19.0",
+    "qrcode-terminal": "^0.12.0"
   }
 }
