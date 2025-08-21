@@ -31,7 +31,18 @@ async function startBot() {
         if(text.toLowerCase() === 'kohomada') await sock.sendMessage(jid, { text: '🙏 හෙලෝ මචං, මම *M.R.Gesa Bot* 🦾' });
         if(text.toLowerCase() === 'suba udasank') await sock.sendMessage(jid, { text: '🌞 සුභ උදෑසනක්! මගේ මිතුරා 🌸' });
         if(text.toLowerCase() === 'mage nama') await sock.sendMessage(jid, { text: '😎 මගේ නම *M.R.Gesa Bot* 🖤' });
-    });
+    const fbPlugin = require('./plugins/fbBotM.R.Gesa'); // plugin එක import කරන්න
+
+sock.ev.on('messages.upsert', async ({ messages }) => {
+  const msg = messages[0];
+  const jid = msg.key.remoteJid;
+  const text = msg.message?.conversation?.trim();
+
+  // Check if reply matches plugin session
+  if (fbPlugin && typeof fbPlugin.onReply === 'function') {
+    await fbPlugin.onReply(sock, msg);
+  }
+});
 }
 
 startBot();
